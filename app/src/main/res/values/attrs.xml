@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="DashSpinner">
+		<attr name="arcSweepSpeed" format="float" />                    <!-- The units that the arc moves by on the circle. Will gradually reduce to zero -->
+		<attr name="arcStartPosition" format="float" />                 <!-- Value between 0.0 - 360.0 -->
+		<attr name="arcColor" format="color"/>                          <!-- The arc color -->
+		<attr name="arcWidth" format="reference|dimension"/>            <!-- The arc width -->
+		<attr name="arcLength" format="float"/>                         <!-- The arc length -->
+		<attr name="outerRingWidth" format="reference|dimension"/>      <!-- The outer ring width -->
+		<attr name="outerRingColor" format="color"/>                    <!-- The outer ring color-->
+		<attr name="innerCircleSuccessColor" format="color"/>           <!-- The inner growing circle Success color -->
+		<attr name="innerCircleFailureColor" format="color"/>           <!-- The inner growing circle Failure color -->
+		<attr name="innerCircleUnknownColor" format="color"/>           <!-- The inner growing circle Unknown Error color -->
+		<attr name="showProgressText" format="boolean"/>                <!-- Show the progress value percentage-->
+		<attr name="maxProgressTextSize" format="reference|dimension"/>   <!-- The max size that the progress text can grow to -->
+		<attr name="textColorFrom" format="color"/>                     <!-- The progress text color -->
+		<attr name="textColorTo" format="color"/>                       <!-- The progress text color -->
+	</declare-styleable>
+</resources>
