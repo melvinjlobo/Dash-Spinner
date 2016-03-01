@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.text.DynamicLayout;
 import android.text.Layout;
@@ -255,6 +256,12 @@ public class DashSpinner extends View {
 	 * The download intimation complete listener
 	 */
 	private OnDownloadIntimationListener mOnDownloadIntimationListener = null;
+
+	/**
+	 * The Animation complete handler, so that a delay can be shown after the animation completes.
+	 * This is so that the animation does not run too fast and break the UX
+	 */
+	private Handler mCompletionHandler = new Handler();
 
 
 	//////////////////////////////////////// CLASS METHODS /////////////////////////////////////////
@@ -1043,8 +1050,14 @@ public class DashSpinner extends View {
 
 				@Override
 				public void onAnimationEnd(Animator animation) {
-					if(mOnDownloadIntimationListener != null)
-						mOnDownloadIntimationListener.onDownloadIntimationDone(mCurrentDashMode);
+					mCompletionHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							if(mOnDownloadIntimationListener != null)
+								mOnDownloadIntimationListener.onDownloadIntimationDone(mCurrentDashMode);
+						}
+					}, TRANSITION_ANIM_DURATION);
+
 				}
 
 				@Override
